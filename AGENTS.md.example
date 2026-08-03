@@ -73,6 +73,14 @@
 
 ### JAVA
 
+- Treat the repository's declared Java version, source/target compatibility, build tool, wrapper, and dependency declaration or lock files as authoritative. Use the project-provided JDK and build entrypoint; do not upgrade the JDK, plugins, or dependencies without authorization.
+- Preserve established package/module boundaries and dependency direction. Put business rules in the layer that owns them, avoid circular dependencies, and introduce framework or utility abstractions only for a current contract or stable repeated responsibility.
+- Preserve public APIs, serialization formats, persistence schemas, transaction boundaries, and error semantics unless the user explicitly requests a breaking change. Update affected contracts, implementation, tests, and documentation together.
+- Manage resource and thread lifecycles explicitly. Use try-with-resources for closeable resources, give executors, queues, connection pools, and retries explicit bounds, and keep shutdown, cancellation, and cleanup paths safe and idempotent.
+- Treat shared mutable state as a concurrency boundary. Prefer immutable values and local state; when synchronization is required, document ownership and prevent races, deadlocks, visibility errors, and cross-request state leakage.
+- Handle exceptions at the boundary that owns the failure semantics and preserve the original cause. Do not catch `Exception` or `Throwable` merely to continue, silently return success or fallback results, or log secrets and sensitive payloads.
+- Follow the repository's existing formatter, compiler-warning, static-analysis, and test conventions. Do not disable checks globally or weaken tests to make a change pass; add regression or contract tests for behavior changes.
+
 
 ## Final Handoff
 
